@@ -48,4 +48,32 @@ public class Dealership {
     public ArrayList<Vehicle> getAllVehicles() {
         return inventory;
     }
+
+    public ArrayList<Vehicle> getVehiclesByPrice(double min, double max) {
+        return null;
+    }
+
+    public ArrayList<Vehicle> getVehiclesByMakeModel(String make, String model) {
+        return null;
+    }
+
+    public ArrayList<Vehicle> getVehiclesByYear(int min, int max) {
+        return null;
+    }
+
+    public ArrayList<Vehicle> getVehiclesByColor(String color) {
+        return null;
+    }
+
+    public ArrayList<Vehicle> getVehiclesByMileage(int min, int max) {
+        return null;
+    }
+
+    public ArrayList<Vehicle> getVehiclesByType(String vehicleType) {
+        return null;
+    }
+
+    public void removeVehicle(int vin) {
+        
+    }
 }
