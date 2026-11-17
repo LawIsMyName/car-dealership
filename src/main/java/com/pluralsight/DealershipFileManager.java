@@ -12,8 +12,7 @@ public class DealershipFileManager {
         Dealership dealership = null;
 
         try {
-            BufferedReader reader =
-                    new BufferedReader(new FileReader("inventory.csv"));
+            BufferedReader reader = new BufferedReader(new FileReader("inventory.csv"));
 
             String line = reader.readLine();
 
@@ -42,10 +41,7 @@ public class DealershipFileManager {
                     int odometer = Integer.parseInt(parts[6]);
                     BigDecimal price = new BigDecimal(parts[7]);
 
-                    Vehicle vehicle = new Vehicle(
-                            vin, year, make, model,
-                            type, color, odometer, price
-                    );
+                    Vehicle vehicle = new Vehicle(vin, year, make, model, type, color, odometer, price);
 
                     dealership.addVehicle(vehicle);
                 }
