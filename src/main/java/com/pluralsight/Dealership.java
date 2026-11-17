@@ -74,6 +74,6 @@ public class Dealership {
     }
 
     public void removeVehicle(int vin) {
-        
+
     }
 }
