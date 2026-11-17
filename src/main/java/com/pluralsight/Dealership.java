@@ -1,6 +1,6 @@
 package com.pluralsight;
 
-import java.math.BigDecimal;
+
 import java.util.ArrayList;
 
 public class Dealership {
@@ -39,5 +39,13 @@ public class Dealership {
 
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+
+    public void addVehicle(Vehicle vehicle) {
+        inventory.add(vehicle);
+    }
+
+    public ArrayList<Vehicle> getAllVehicles() {
+        return inventory;
     }
 }
