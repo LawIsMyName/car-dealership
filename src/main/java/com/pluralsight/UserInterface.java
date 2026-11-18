@@ -72,14 +72,21 @@ public class UserInterface {
         System.out.print("Enter maximum price: ");
         BigDecimal max = new BigDecimal(scanner.nextLine());
 
-        ArrayList<Vehicle> vehicles =
-                dealership.getVehiclesByPrice(min, max);
-
+        ArrayList<Vehicle> vehicles = dealership.getVehiclesByPrice(min, max);
         displayVehicles(vehicles);
     }
 
     private void processGetByMakeModelRequest() {
+        System.out.println("---- SEARCH BY MAKE/MODEL ----");
 
+        System.out.print("Enter make: ");
+        String make = scanner.nextLine();
+
+        System.out.print("Enter model: ");
+        String model = scanner.nextLine();
+
+        ArrayList<Vehicle> vehicles = dealership.getVehiclesByMakeModel(make, model);
+        displayVehicles(vehicles);
     }
 
     private void processGetByYearRequest() {
