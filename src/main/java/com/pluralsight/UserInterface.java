@@ -104,7 +104,14 @@ public class UserInterface {
     }
 
     private void processGetByColorRequest() {
+        System.out.println("---- SEARCH BY COLOR ----");
 
+        System.out.print("Enter color: ");
+        String color = scanner.nextLine();
+
+        ArrayList<Vehicle> vehicles = dealership.getVehiclesByColor(color);
+
+        displayVehicles(vehicles);
     }
 
     private void processGetByMileageRequest() {
