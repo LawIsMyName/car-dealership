@@ -129,6 +129,14 @@ public class UserInterface {
     }
 
     private void processGetByTypeRequest() {
+        System.out.println("---- SEARCH BY VEHICLE TYPE ----");
+
+        System.out.print("Enter vehicle type: ");
+        String type = scanner.nextLine();
+
+        ArrayList<Vehicle> vehicles = dealership.getVehiclesByType(type);
+
+        displayVehicles(vehicles);
 
     }
 
