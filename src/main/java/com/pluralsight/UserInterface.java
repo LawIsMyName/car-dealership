@@ -180,7 +180,30 @@ public class UserInterface {
     }
 
     private void processRemoveVehicleRequest() {
+        System.out.println("---- REMOVE VEHICLE ----");
 
+        System.out.print("Enter VIN of vehicle to remove: ");
+        int vin = Integer.parseInt(scanner.nextLine());
+
+        Vehicle vehicleToRemove = null;
+
+        for (Vehicle vehicle : dealership.getAllVehicles()) {
+
+            if (vehicle.getVin() == vin) {
+                vehicleToRemove = vehicle;
+                break;
+            }
+        }
+
+        if (vehicleToRemove != null) {
+
+            dealership.removeVehicle(vehicleToRemove);
+
+            System.out.println("Vehicle removed successfully!");
+
+        } else {
+            System.out.println("Vehicle not found.");
+        }
     }
 
     private void displayVehicles(ArrayList<Vehicle> vehicles) {
