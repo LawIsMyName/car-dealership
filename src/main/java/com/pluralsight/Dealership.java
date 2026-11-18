@@ -49,13 +49,13 @@ public class Dealership {
         return inventory;
     }
 
-    public ArrayList<Vehicle> getVehiclesByPrice(double min, double max) {
+    public ArrayList<Vehicle> getVehiclesByPrice(BigDecimal min, BigDecimal max) {
         ArrayList<Vehicle> matches = new ArrayList<>();
 
         for (Vehicle vehicle : inventory) {
 
-            if (vehicle.getPrice().compareTo(BigDecimal.valueOf(min)) >= 0
-                    && vehicle.getPrice().compareTo(BigDecimal.valueOf(max)) <= 0) {
+            if (vehicle.getPrice().compareTo((min)) >= 0
+                    && vehicle.getPrice().compareTo((max)) <= 0) {
 
                 matches.add(vehicle);
             }
