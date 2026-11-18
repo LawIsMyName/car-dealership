@@ -54,8 +54,7 @@ public class Dealership {
 
         for (Vehicle vehicle : inventory) {
 
-            if (vehicle.getPrice().compareTo((min)) >= 0
-                    && vehicle.getPrice().compareTo((max)) <= 0) {
+            if (vehicle.getPrice().compareTo((min)) >= 0 && vehicle.getPrice().compareTo((max)) <= 0) {
 
                 matches.add(vehicle);
             }
@@ -79,7 +78,17 @@ public class Dealership {
     }
 
     public ArrayList<Vehicle> getVehiclesByYear(int min, int max) {
-        return null;
+        ArrayList<Vehicle> matches = new ArrayList<>();
+
+        for (Vehicle vehicle : inventory) {
+
+            if (vehicle.getYear() >= min && vehicle.getYear() <= max) {
+
+                matches.add(vehicle);
+            }
+        }
+
+        return matches;
     }
 
     public ArrayList<Vehicle> getVehiclesByColor(String color) {
