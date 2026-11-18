@@ -1,5 +1,6 @@
 package com.pluralsight;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class UserInterface {
@@ -61,6 +62,85 @@ public class UserInterface {
         System.out.println("0) Exit");
         System.out.print("Enter your choice: ");
     }
-}
+
+    private void processGetByPriceRequest() {
+
+    }
+
+    private void processGetByMakeModelRequest() {
+
+    }
+
+    private void processGetByYearRequest() {
+
+    }
+
+    private void processGetByColorRequest() {
+
+    }
+
+    private void processGetByMileageRequest() {
+
+    }
+
+    private void processGetByTypeRequest() {
+
+    }
+
+    private void processGetAllVehiclesRequest() {
+        ArrayList<Vehicle> vehicles = dealership.getAllVehicles();
+        displayVehicles(vehicles);
+    }
+
+    private void processAddVehicleRequest() {
+
+    }
+
+    private void processRemoveVehicleRequest() {
+
+    }
+
+    private void displayVehicles(ArrayList<Vehicle> vehicles) {
+        if (vehicles == null || vehicles.isEmpty()) {
+            System.out.println("No vehicles found.");
+            return;
+        }
+
+        System.out.println();
+        System.out.println("---- VEHICLE INVENTORY ----");
+
+        System.out.printf(
+                "%-7s %-6s %-12s %-12s %-10s %-10s %-10s %12s%n",
+                "VIN", "YEAR", "MAKE", "MODEL",
+                "TYPE", "COLOR", "MILEAGE", "PRICE"
+        );
+
+        System.out.println(
+                "------------------------------------------------------------------------------------------"
+        );
+
+        for (Vehicle vehicle : vehicles) {
+
+            System.out.printf(
+                    "%-7d %-6d %-12s %-12s %-10s %-10s %-10d $%11.2f%n",
+                    vehicle.getVin(),
+                    vehicle.getYear(),
+                    vehicle.getMake(),
+                    vehicle.getModel(),
+                    vehicle.getVehicleType(),
+                    vehicle.getColor(),
+                    vehicle.getOdometer(),
+                    vehicle.getPrice()
+            );
+        }
+
+        System.out.println();
+        System.out.println("Total vehicles: " + vehicles.size());
+    }
+
+    }
+
 
 }
+
+
