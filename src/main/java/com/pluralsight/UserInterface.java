@@ -9,8 +9,7 @@ public class UserInterface {
     private Scanner scanner = new Scanner(System.in);
 
     private void init() {
-        DealershipFileManager fileManager =
-                new DealershipFileManager();
+        DealershipFileManager fileManager = new DealershipFileManager();
 
         dealership = fileManager.getDealership();
     }
@@ -141,6 +140,6 @@ public class UserInterface {
     }
 
 
-}
+
 
 
