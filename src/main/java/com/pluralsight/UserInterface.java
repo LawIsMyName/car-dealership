@@ -90,7 +90,17 @@ public class UserInterface {
     }
 
     private void processGetByYearRequest() {
+        System.out.println("---- SEARCH BY YEAR ----");
 
+        System.out.print("Enter minimum year: ");
+        int min = Integer.parseInt(scanner.nextLine());
+
+        System.out.print("Enter maximum year: ");
+        int max = Integer.parseInt(scanner.nextLine());
+
+        ArrayList<Vehicle> vehicles = dealership.getVehiclesByYear(min, max);
+
+        displayVehicles(vehicles);
     }
 
     private void processGetByColorRequest() {
