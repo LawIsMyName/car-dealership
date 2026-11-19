@@ -248,18 +248,12 @@ public class UserInterface {
 
         int odometer = promptForInt("Enter mileage: ");
 
-        BigDecimal price = promptForBigDecimal("Enter price: ");
-
-
-        if (year < 1886) {
-            System.out.println("Please enter a valid vehicle year.");
-            return;
-        }
-
         if (odometer < 0) {
             System.out.println("Mileage cannot be negative.");
             return;
         }
+
+        BigDecimal price = promptForBigDecimal("Enter price: ");
 
         if (price.compareTo(BigDecimal.ZERO) < 0) {
             System.out.println("Price cannot be negative.");
