@@ -194,6 +194,19 @@ public class UserInterface {
 
         int vin = promptForInt("Enter VIN: ");
 
+        if (vin <= 0) {
+            System.out.println("VIN must be greater than zero.");
+            return;
+        }
+
+        for (Vehicle existingVehicle : dealership.getAllVehicles()) {
+
+            if (existingVehicle.getVin() == vin) {
+                System.out.println("A vehicle with this VIN already exists.");
+                return;
+            }
+        }
+
         int year = promptForInt("Enter year: ");
 
         System.out.print("Enter make: ");
@@ -232,18 +245,6 @@ public class UserInterface {
 
         BigDecimal price = promptForBigDecimal("Enter price: ");
 
-        if (vin <= 0) {
-            System.out.println("VIN must be greater than zero.");
-            return;
-        }
-
-        for (Vehicle existingVehicle : dealership.getAllVehicles()) {
-
-            if (existingVehicle.getVin() == vin) {
-                System.out.println("A vehicle with this VIN already exists.");
-                return;
-            }
-        }
 
         if (year < 1886) {
             System.out.println("Please enter a valid vehicle year.");
