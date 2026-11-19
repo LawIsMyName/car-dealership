@@ -11,13 +11,18 @@ public class UserInterface {
 
     private void init() {
         DealershipFileManager fileManager = new DealershipFileManager();
-
         dealership = fileManager.getDealership();
+
     }
 
     public void display() {
 
         init();
+
+        if (dealership == null) {
+            System.out.println("Unable to load dealership inventory.");
+            return;
+        }
 
         boolean running = true;
 
@@ -150,6 +155,11 @@ public class UserInterface {
                 return;
             }
 
+            if (min < 0 || max < 0) {
+                System.out.println("Mileage cannot be negative.");
+                return;
+            }
+
             ArrayList<Vehicle> vehicles = dealership.getVehiclesByMileage(min, max);
 
             displayVehicles(vehicles);
@@ -211,8 +221,7 @@ public class UserInterface {
     private void processRemoveVehicleRequest() {
         System.out.println("---- REMOVE VEHICLE ----");
 
-        System.out.print("Enter VIN of vehicle to remove: ");
-        int vin = Integer.parseInt(scanner.nextLine());
+        int vin = promptForInt("Enter VIN vehicle to remove: ");
 
         Vehicle vehicleToRemove = null;
 
