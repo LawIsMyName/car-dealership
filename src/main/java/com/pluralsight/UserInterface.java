@@ -81,6 +81,9 @@ public class UserInterface {
             if (min.compareTo(max) > 0) {
                 System.out.println("Minimum price cannot be greater than maximum price.");
                 return;
+            }if (min.compareTo(BigDecimal.ZERO) < 0 || max.compareTo(BigDecimal.ZERO) < 0) {
+                System.out.println("Price cannot be negative.");
+                return;
             }
 
             ArrayList<Vehicle> vehicles = dealership.getVehiclesByPrice(min, max);
@@ -153,9 +156,7 @@ public class UserInterface {
             if (min > max) {
                 System.out.println("Minimum mileage cannot be greater than maximum mileage.");
                 return;
-            }
-
-            if (min < 0 || max < 0) {
+            }if (min < 0 || max < 0) {
                 System.out.println("Mileage cannot be negative.");
                 return;
             }
