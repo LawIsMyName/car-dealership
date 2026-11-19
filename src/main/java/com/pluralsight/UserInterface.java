@@ -176,6 +176,10 @@ public class UserInterface {
 
         dealership.addVehicle(vehicle);
 
+        DealershipFileManager fileManager = new DealershipFileManager();
+
+        fileManager.saveDealership(dealership);
+
         System.out.println("Vehicle added successfully!");
     }
 
@@ -198,6 +202,10 @@ public class UserInterface {
         if (vehicleToRemove != null) {
 
             dealership.removeVehicle(vehicleToRemove);
+
+            DealershipFileManager fileManager = new DealershipFileManager();
+
+            fileManager.saveDealership(dealership);
 
             System.out.println("Vehicle removed successfully!");
 
