@@ -158,7 +158,9 @@ public class UserInterface {
             if (min > max) {
                 System.out.println("Minimum mileage cannot be greater than maximum mileage.");
                 return;
-            }if (min < 0 || max < 0) {
+            }
+
+            if (min < 0 || max < 0) {
                 System.out.println("Mileage cannot be negative.");
                 return;
             }
