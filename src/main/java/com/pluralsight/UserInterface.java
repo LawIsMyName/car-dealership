@@ -333,6 +333,8 @@ public class UserInterface {
                 System.out.print(prompt);
                 return Integer.parseInt(scanner.nextLine());
 
+
+
             } catch (NumberFormatException e) {
                 System.out.println("Invalid input. Please enter a whole number.");
             }
@@ -349,6 +351,23 @@ public class UserInterface {
 
             } catch (NumberFormatException e) {
                 System.out.println("Invalid price. Please enter a valid number.");
+            }
+        }
+    }
+
+    private String promptForString(String prompt) {
+
+        while (true) {
+
+            System.out.print(prompt);
+            String input = scanner.nextLine().trim();
+
+            if (input.isBlank()) {
+                System.out.println("Input cannot be empty.");
+            } else if (input.contains("|")) {
+                System.out.println("Input cannot contain |.");
+            } else {
+                return input;
             }
         }
     }
