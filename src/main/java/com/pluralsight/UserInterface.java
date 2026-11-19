@@ -214,37 +214,13 @@ public class UserInterface {
             return;
         }
 
-        System.out.print("Enter make: ");
-        String make = scanner.nextLine();
+        String make = promptForString("Enter make: ");
 
-        if (make.isBlank()) {
-            System.out.println("Vehicle make cannot be empty.");
-            return;
-        }
+        String model = promptForString("Enter model: ");
 
-        System.out.print("Enter model: ");
-        String model = scanner.nextLine();
+        String type = promptForString("Enter vehicle type: ");
 
-        if (model.isBlank()) {
-            System.out.println("Vehicle model cannot be empty.");
-            return;
-        }
-
-        System.out.print("Enter vehicle type: ");
-        String type = scanner.nextLine();
-
-        if (type.isBlank()) {
-            System.out.println("Vehicle type cannot be empty.");
-            return;
-        }
-
-        System.out.print("Enter color: ");
-        String color = scanner.nextLine();
-
-        if (color.isBlank()) {
-            System.out.println("Vehicle color cannot be empty.");
-            return;
-        }
+        String color = promptForString("Enter color: ");
 
         int odometer = promptForInt("Enter mileage: ");
 
