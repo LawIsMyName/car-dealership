@@ -64,80 +64,109 @@ public class UserInterface {
     }
 
     private void processGetByPriceRequest() {
-        System.out.println("---- SEARCH BY PRICE ----");
+        try {
+            System.out.println("---- SEARCH BY PRICE ----");
 
-        System.out.print("Enter minimum price: ");
-        BigDecimal min = new BigDecimal(scanner.nextLine());
+            System.out.print("Enter minimum price: ");
+            BigDecimal min = new BigDecimal(scanner.nextLine());
 
-        System.out.print("Enter maximum price: ");
-        BigDecimal max = new BigDecimal(scanner.nextLine());
+            System.out.print("Enter maximum price: ");
+            BigDecimal max = new BigDecimal(scanner.nextLine());
 
-        ArrayList<Vehicle> vehicles = dealership.getVehiclesByPrice(min, max);
-        displayVehicles(vehicles);
+            if (min.compareTo(max) > 0) {
+                System.out.println("Minimum price cannot be greater than maximum price.");
+                return;
+            }
+
+            ArrayList<Vehicle> vehicles = dealership.getVehiclesByPrice(min, max);
+            displayVehicles(vehicles);
+        } catch (NumberFormatException e) {
+            System.out.println("Invalid Price. Please enter a valid amount.");
+        }
     }
 
     private void processGetByMakeModelRequest() {
-        System.out.println("---- SEARCH BY MAKE/MODEL ----");
+            System.out.println("---- SEARCH BY MAKE/MODEL ----");
 
-        System.out.print("Enter make: ");
-        String make = scanner.nextLine();
+            System.out.print("Enter make: ");
+            String make = scanner.nextLine();
 
-        System.out.print("Enter model: ");
-        String model = scanner.nextLine();
+            System.out.print("Enter model: ");
+            String model = scanner.nextLine();
 
-        ArrayList<Vehicle> vehicles = dealership.getVehiclesByMakeModel(make, model);
-        displayVehicles(vehicles);
+            ArrayList<Vehicle> vehicles = dealership.getVehiclesByMakeModel(make, model);
+            displayVehicles(vehicles);
+
+
     }
 
     private void processGetByYearRequest() {
-        System.out.println("---- SEARCH BY YEAR ----");
+        try {
+            System.out.println("---- SEARCH BY YEAR ----");
 
-        System.out.print("Enter minimum year: ");
-        int min = Integer.parseInt(scanner.nextLine());
+            System.out.print("Enter minimum year: ");
+            int min = Integer.parseInt(scanner.nextLine());
 
-        System.out.print("Enter maximum year: ");
-        int max = Integer.parseInt(scanner.nextLine());
+            System.out.print("Enter maximum year: ");
+            int max = Integer.parseInt(scanner.nextLine());
 
-        ArrayList<Vehicle> vehicles = dealership.getVehiclesByYear(min, max);
+            if (min > max) {
+                System.out.println("Minimum year cannot be greater than maximum year.");
+                return;
+            }
 
-        displayVehicles(vehicles);
+            ArrayList<Vehicle> vehicles = dealership.getVehiclesByYear(min, max);
+
+            displayVehicles(vehicles);
+        } catch (NumberFormatException e) {
+            System.out.println("Invalid year. Please enter a whole number.");
+        }
+
     }
 
     private void processGetByColorRequest() {
-        System.out.println("---- SEARCH BY COLOR ----");
+            System.out.println("---- SEARCH BY COLOR ----");
 
-        System.out.print("Enter color: ");
-        String color = scanner.nextLine();
+            System.out.print("Enter color: ");
+            String color = scanner.nextLine();
 
-        ArrayList<Vehicle> vehicles = dealership.getVehiclesByColor(color);
+            ArrayList<Vehicle> vehicles = dealership.getVehiclesByColor(color);
 
-        displayVehicles(vehicles);
+            displayVehicles(vehicles);
     }
 
     private void processGetByMileageRequest() {
-        System.out.println("---- SEARCH BY MILEAGE ----");
+        try {
+            System.out.println("---- SEARCH BY MILEAGE ----");
 
-        System.out.print("Enter minimum mileage: ");
-        int min = Integer.parseInt(scanner.nextLine());
+            System.out.print("Enter minimum mileage: ");
+            int min = Integer.parseInt(scanner.nextLine());
 
-        System.out.print("Enter maximum mileage: ");
-        int max = Integer.parseInt(scanner.nextLine());
+            System.out.print("Enter maximum mileage: ");
+            int max = Integer.parseInt(scanner.nextLine());
 
-        ArrayList<Vehicle> vehicles = dealership.getVehiclesByMileage(min, max);
+            if (min > max) {
+                System.out.println("Minimum mileage cannot be greater than maximum mileage.");
+                return;
+            }
 
-        displayVehicles(vehicles);
+            ArrayList<Vehicle> vehicles = dealership.getVehiclesByMileage(min, max);
+
+            displayVehicles(vehicles);
+        } catch (NumberFormatException e) {
+            System.out.println("Invalid mileage. Please enter a whole number.");
+        }
     }
 
     private void processGetByTypeRequest() {
-        System.out.println("---- SEARCH BY VEHICLE TYPE ----");
+            System.out.println("---- SEARCH BY VEHICLE TYPE ----");
 
-        System.out.print("Enter vehicle type: ");
-        String type = scanner.nextLine();
+            System.out.print("Enter vehicle type: ");
+            String type = scanner.nextLine();
 
-        ArrayList<Vehicle> vehicles = dealership.getVehiclesByType(type);
+            ArrayList<Vehicle> vehicles = dealership.getVehiclesByType(type);
 
-        displayVehicles(vehicles);
-
+            displayVehicles(vehicles);
     }
 
     private void processGetAllVehiclesRequest() {
@@ -148,11 +177,9 @@ public class UserInterface {
     private void processAddVehicleRequest() {
         System.out.println("---- ADD VEHICLE ----");
 
-        System.out.print("Enter VIN: ");
-        int vin = Integer.parseInt(scanner.nextLine());
+        int vin = promptForInt("Enter VIN: ");
 
-        System.out.print("Enter year: ");
-        int year = Integer.parseInt(scanner.nextLine());
+        int year = promptForInt("Enter year: ");
 
         System.out.print("Enter make: ");
         String make = scanner.nextLine();
@@ -166,11 +193,9 @@ public class UserInterface {
         System.out.print("Enter color: ");
         String color = scanner.nextLine();
 
-        System.out.print("Enter mileage: ");
-        int odometer = Integer.parseInt(scanner.nextLine());
+        int odometer = promptForInt("Enter mileage: ");
 
-        System.out.print("Enter price: ");
-        BigDecimal price = new BigDecimal(scanner.nextLine());
+        BigDecimal price = promptForBigDecimal("Enter price: ");
 
         Vehicle vehicle = new Vehicle(vin, year, make, model, type, color, odometer, price);
 
@@ -236,6 +261,35 @@ public class UserInterface {
         System.out.println("Total vehicles: " + vehicles.size());
     }
 
+    //-------------------------------------------------- input helpers
+
+    private int promptForInt(String prompt) {
+
+        while (true) {
+
+            try {
+                System.out.print(prompt);
+                return Integer.parseInt(scanner.nextLine());
+
+            } catch (NumberFormatException e) {
+                System.out.println("Invalid input. Please enter a whole number.");
+            }
+        }
+    }
+
+    private BigDecimal promptForBigDecimal(String prompt) {
+
+        while (true) {
+
+            try {
+                System.out.print(prompt);
+                return new BigDecimal(scanner.nextLine());
+
+            } catch (NumberFormatException e) {
+                System.out.println("Invalid price. Please enter a valid number.");
+            }
+        }
+    }
 }
 
 
