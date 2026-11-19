@@ -209,6 +209,11 @@ public class UserInterface {
 
         int year = promptForInt("Enter year: ");
 
+        if (year < 1886) {
+            System.out.println("Please enter a valid vehicle year.");
+            return;
+        }
+
         System.out.print("Enter make: ");
         String make = scanner.nextLine();
 
