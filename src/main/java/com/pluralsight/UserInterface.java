@@ -198,7 +198,7 @@ public class UserInterface {
         String make = scanner.nextLine();
 
         if (make.isBlank()) {
-            System.out.println("Vehicle model cannot be empty.");
+            System.out.println("Vehicle make cannot be empty.");
             return;
         }
 
