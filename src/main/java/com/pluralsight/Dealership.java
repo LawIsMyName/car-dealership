@@ -130,6 +130,7 @@ public class Dealership {
 
         return matches;
     }
+
     public void removeVehicle(Vehicle vehicle) {
         inventory.remove(vehicle);
     }
