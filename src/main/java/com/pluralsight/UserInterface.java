@@ -81,7 +81,9 @@ public class UserInterface {
             if (min.compareTo(max) > 0) {
                 System.out.println("Minimum price cannot be greater than maximum price.");
                 return;
-            }if (min.compareTo(BigDecimal.ZERO) < 0 || max.compareTo(BigDecimal.ZERO) < 0) {
+            }
+
+            if (min.compareTo(BigDecimal.ZERO) < 0 || max.compareTo(BigDecimal.ZERO) < 0) {
                 System.out.println("Price cannot be negative.");
                 return;
             }
@@ -207,6 +209,34 @@ public class UserInterface {
         int odometer = promptForInt("Enter mileage: ");
 
         BigDecimal price = promptForBigDecimal("Enter price: ");
+
+        if (vin <= 0) {
+            System.out.println("VIN must be greater than zero.");
+            return;
+        }
+
+        for (Vehicle existingVehicle : dealership.getAllVehicles()) {
+
+            if (existingVehicle.getVin() == vin) {
+                System.out.println("A vehicle with this VIN already exists.");
+                return;
+            }
+        }
+
+        if (year < 1886) {
+            System.out.println("Please enter a valid vehicle year.");
+            return;
+        }
+
+        if (odometer < 0) {
+            System.out.println("Mileage cannot be negative.");
+            return;
+        }
+
+        if (price.compareTo(BigDecimal.ZERO) < 0) {
+            System.out.println("Price cannot be negative.");
+            return;
+        }
 
         Vehicle vehicle = new Vehicle(vin, year, make, model, type, color, odometer, price);
 
