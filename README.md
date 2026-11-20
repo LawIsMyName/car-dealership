@@ -118,7 +118,6 @@ One interesting part of this project is the reusable input validation methods.
 
 Instead of writing the same validation logic multiple times, I created helper methods to handle different types of user input.
 ## String Input Validation
-String Input Validation
 ```java
 private String promptForString(String prompt) {
 
